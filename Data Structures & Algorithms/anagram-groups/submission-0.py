@@ -1,10 +1,13 @@
 from collections import defaultdict
+from typing import List
+
+
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        g=defaultdict(list)
-        for i in strs:
-            freq=[0]*26
-            for j in i:
-                freq[ord(j) - ord('a')] += 1
-            g[tuple(freq)].append(i)
-        return list(g.values())
+        groups = defaultdict(list)
+        for word in strs:
+            frequency = [0] * 26
+            for char in word:
+                frequency[ord(char) - ord("a")] += 1
+            groups[tuple(frequency)].append(word)
+        return list(groups.values())
